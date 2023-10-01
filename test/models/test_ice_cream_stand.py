@@ -5,7 +5,7 @@ class TestIceCreamStand:
 
     def test_flavors_available_existent_stock(self):
         icecreamstand = IceCreamStand('Mamma Mia', 'comida italiana', ['limao', 'pistache', 'tiramisu'])
-        response_assert = 'No momento temos os seguintes sabores de sorvete disponíveis:\t-limao,\tpistache,\t-tiramisu'
+        response_assert = f'\nNo momento temos os seguintes sabores de sorvete disponíveis:\t-limao\t-pistache\t-tiramisu'
 
         response = icecreamstand.flavors_available()
 
@@ -45,9 +45,9 @@ class TestIceCreamStand:
 
     def test_add_flavor_existent_flavor(self):
         icecreamstand = IceCreamStand('Mamma Mia', 'comida italiana', ['limao', 'pistache', 'tiramisu'])
-        response_assert = 'Sabor já disponivel!'
+        response_assert = f"\nSabor já disponivel!"
 
-        response = icecreamstand.find_flavor('limao')
+        response = icecreamstand.add_flavor('limao')
 
         assert response_assert == response, 'Retorno do código difere da mensagem esperada.'
 
@@ -55,7 +55,7 @@ class TestIceCreamStand:
         icecreamstand = IceCreamStand('Mamma Mia', 'comida italiana', ['limao', 'pistache', 'tiramisu'])
         response_assert = 'Baunilha adicionado ao estoque!'
 
-        response = icecreamstand.find_flavor('baunilha')
+        response = icecreamstand.add_flavor('baunilha')
 
         assert response_assert == response, 'Retorno do código difere da mensagem esperada.'
 
@@ -63,6 +63,6 @@ class TestIceCreamStand:
         icecreamstand = IceCreamStand('Mamma Mia', 'comida italiana', [])
         response_assert = 'Estamos sem estoque atualmente!'
 
-        response = icecreamstand.find_flavor('limao')
+        response = icecreamstand.add_flavor('limao')
 
         assert response_assert == response, 'Retorno do código difere da mensagem esperada.'
